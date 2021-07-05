@@ -1,24 +1,35 @@
 import React from 'react'
 import '../styles/styles.css'
+import '../styles/tailwind.css'
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from 'react-toastify';
+import HomePage from '../pages/HomePage'
+import ThreadPage from '../pages/ThreadPage'
 
-function App() {
+
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+  } from 'react-router-dom';
+
+const App = () => {
   return (
-    <div className="container">
-      <div className="flex flex-col justify-center items-center h-screen">
-        <h1 className="text-gray-700 text-5xl font-semibold">
-          <span className="bg-clip-text text-transparent bg-gradient-to-l to-blue-600 from-gray-700">
-            React
-          </span>
-          {' + '}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-700 to-teal-400">
-            TailwindCSS
-          </span>
-        </h1>
-        <span className="text-lg text-gray-600">
-          Minimal boilerplate, ready-to-use!
-        </span>
-      </div>
-    </div>
+    <Router>
+        <ToastContainer />
+        <div className="w-screen min-h-screen text-gray-700 bg-gradient-to-tr from-gray-100 via-gray-200 to-gray-300 pt-4">
+            <div className="container">
+                <Switch>
+                    <Route exact path="/">
+                        <HomePage />
+                    </Route>
+                    <Route path="/thread/:id">
+                        <ThreadPage />
+                    </Route>
+                </Switch>
+            </div>
+        </div>
+    </Router>
   )
 }
 
